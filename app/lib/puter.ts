@@ -111,7 +111,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
         signOut: get().auth.signOut,
         refreshUser: get().auth.refreshUser,
         checkAuthStatus: get().auth.checkAuthStatus,
-        getUser: get().auth.getUser,
+        getUser: () => get().auth.user,
       },
     });
   };
@@ -137,7 +137,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
             signOut: get().auth.signOut,
             refreshUser: get().auth.refreshUser,
             checkAuthStatus: get().auth.checkAuthStatus,
-            getUser: () => user,
+            getUser: () => get().auth.user,
           },
           isLoading: false,
         });
@@ -151,7 +151,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
             signOut: get().auth.signOut,
             refreshUser: get().auth.refreshUser,
             checkAuthStatus: get().auth.checkAuthStatus,
-            getUser: () => null,
+            getUser: () => get().auth.user,
           },
           isLoading: false,
         });
@@ -202,7 +202,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
           signOut: get().auth.signOut,
           refreshUser: get().auth.refreshUser,
           checkAuthStatus: get().auth.checkAuthStatus,
-          getUser: () => null,
+          getUser: () => get().auth.user,
         },
         isLoading: false,
       });
@@ -231,7 +231,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
           signOut: get().auth.signOut,
           refreshUser: get().auth.refreshUser,
           checkAuthStatus: get().auth.checkAuthStatus,
-          getUser: () => user,
+          getUser: () => get().auth.user,
         },
         isLoading: false,
       });
