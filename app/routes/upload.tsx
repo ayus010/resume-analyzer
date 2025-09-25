@@ -27,7 +27,7 @@ const Upload = () => {
     }) => {
         setIsProcessing(true);
         setStatusText("Uploading the file...");
-        try {
+        try {   
             const uploadedFile = await fs.upload([file]);
             if (!uploadedFile) {
                 setStatusText("Error: Failed to Upload File");
@@ -93,14 +93,27 @@ const Upload = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget.closest('form');
-        if(!form) return;
+        if(!form) {
+            console.error("Form not found");
+            return;
+        }
         const formData = new FormData(form);
 
         const companyName = formData.get('company-name') as string;
         const jobTitle = formData.get('job-title') as string;
         const jobDescription = formData.get('job-description') as string;
 
-        if(!file) return;
+        console.log({
+            companyName,
+            jobTitle,
+            jobDescription,
+            fileSelected: !!file
+        });
+
+        if(!file) {
+            alert("Please upload a resume file");
+            return;
+        }
 
         handleAnalyze({companyName, jobTitle, jobDescription, file});
     }
