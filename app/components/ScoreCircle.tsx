@@ -1,10 +1,34 @@
+import { useEffect, useState } from 'react';
+
 const ScoreCircle = ({ score = 75 }: { score: number }) => {
   const radius = 40;
   const stroke = 8;
   const normalizedRadius = radius - stroke / 2;
   const circumference = 2 * Math.PI * normalizedRadius;
-  const progress = score / 100;
-  const strokeDashoffset = circumference * (1 - progress);
+  const [displayScore, setDisplayScore] = useState(0);
+  const [strokeDashoffset, setStrokeDashoffset] = useState(circumference);
+
+  useEffect(() => {
+    // Animate the score counting up
+    const duration = 1000; // 1 second animation
+    const step = Math.ceil(score / 20); // Update in 20 steps
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current = Math.min(current + step, score);
+      setDisplayScore(current);
+
+      // Update circle progress
+      const progress = current / 100;
+      setStrokeDashoffset(circumference * (1 - progress));
+
+      if (current >= score) {
+        clearInterval(timer);
+      }
+    }, 50);
+
+    return () => clearInterval(timer);
+  }, [score, circumference]);
 
   return (
     <div className="relative w-[100px] h-[100px]">
@@ -40,12 +64,13 @@ const ScoreCircle = ({ score = 75 }: { score: number }) => {
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
+          className="transition-all duration-300"
         />
       </svg>
 
-      {/* Score and issues */}
+      {/* Score display */}
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="font-semibold text-sm">{`${score}/100`}</span>
+        <span className="font-semibold text-sm">{`${displayScore}/100`}</span>
       </div>
     </div>
   );
