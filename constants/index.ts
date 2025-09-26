@@ -9,23 +9,39 @@ export const resumes: Resume[] = [
       overallScore: 85,
       ATS: {
         score: 90,
-        tips: [],
+        tips: [
+          { type: "good", tip: "Includes all key job keywords" },
+          { type: "good", tip: "Properly formatted for ATS parsing" },
+          { type: "improve", tip: "Could use more industry-specific terms" }
+        ],
       },
       toneAndStyle: {
         score: 90,
-        tips: [],
+        tips: [
+          { type: "good", tip: "Professional language", explanation: "Uses appropriate professional terminology throughout the resume." },
+          { type: "good", tip: "Consistent tone", explanation: "Maintains a consistent professional tone across all sections." },
+        ],
       },
       content: {
         score: 90,
-        tips: [],
+        tips: [
+          { type: "good", tip: "Quantified achievements", explanation: "Includes specific metrics and results for key achievements." },
+          { type: "improve", tip: "More recent projects", explanation: "Could benefit from highlighting more recent work examples." },
+        ],
       },
       structure: {
         score: 90,
-        tips: [],
+        tips: [
+          { type: "good", tip: "Clear sections", explanation: "Well-organized with distinct sections that are easy to navigate." },
+          { type: "good", tip: "Logical flow", explanation: "Information is presented in a logical order with good hierarchy." },
+        ],
       },
       skills: {
         score: 90,
-        tips: [],
+        tips: [
+          { type: "good", tip: "Relevant technical skills", explanation: "Includes all the key technical skills mentioned in the job description." },
+          { type: "improve", tip: "Soft skills", explanation: "Could include more soft skills that show leadership and teamwork ability." },
+        ],
       },
     },
   },
