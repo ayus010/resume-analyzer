@@ -32,10 +32,12 @@ const ResumeCard = ({ resume: { id, companyName, jobTitle, feedback, imagePath }
 
     return (
         <div 
-            className="resume-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            className="resume-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1
+             w-full lg:w-[450px] xl:w-[490px] mx-auto"
             onClick={isPreview ? auth.signIn : undefined}
             style={isPreview ? {cursor: 'pointer'} : {}}
         >
+
             {!isPreview ? (
                 <Link to={`/resume/${id}`} className="resume-card-content">
                     <div className="resume-card-header">
@@ -44,7 +46,7 @@ const ResumeCard = ({ resume: { id, companyName, jobTitle, feedback, imagePath }
                             {jobTitle && <h3 className="text-lg break-words text-gray-500">{jobTitle}</h3>}
                             {!companyName && !jobTitle && <h2 className="!text-black font-bold">Resume</h2>}
                         </div>
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 score-circle">
                             <ScoreCircle score={feedback.overallScore} />
                         </div>
                     </div>
@@ -54,8 +56,12 @@ const ResumeCard = ({ resume: { id, companyName, jobTitle, feedback, imagePath }
                                 <img
                                     src={resumeUrl}
                                     alt="resume"
-                                    className="w-full h-[350px] max-sm:h-[200px] object-cover object-top hover:scale-105 transition-transform duration-500"
+                                    className="
+                                        w-full transition-transform duration-500 hover:scale-105 rounded-lg
+                                        object-cover object-top h-[350px]       
+                                        mmax-sm:object-contain max-sm:h-auto"
                                 />
+
                             </div>
                         </div>
                     )}
@@ -68,7 +74,7 @@ const ResumeCard = ({ resume: { id, companyName, jobTitle, feedback, imagePath }
                             {jobTitle && <h3 className="text-lg break-words text-gray-500">{jobTitle}</h3>}
                             {!companyName && !jobTitle && <h2 className="!text-black font-bold">Resume</h2>}
                         </div>
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 score-circle">
                             <ScoreCircle score={feedback.overallScore} />
                         </div>
                     </div>
@@ -78,8 +84,13 @@ const ResumeCard = ({ resume: { id, companyName, jobTitle, feedback, imagePath }
                                 <img
                                     src={resumeUrl}
                                     alt="resume"
-                                    className="w-full h-[350px] max-sm:h-[200px] object-cover object-top filter hover:brightness-90 transition-all duration-300"
+                                    className="
+                                        w-full transition-transform duration-500 hover:scale-105 rounded-lg
+                                        object-cover object-top h-[350px]       
+                                        mmax-sm:object-contain max-sm:h-auto"
                                 />
+
+                            
                             </div>
                         </div>
                     )}
