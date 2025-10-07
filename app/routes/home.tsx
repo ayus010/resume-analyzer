@@ -40,7 +40,7 @@ export default function Home() {
     loadResumes();
   }, [auth.isAuthenticated]);
 
-  return <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+  return <main className="bg-[url('/images/bg-main.svg')] bg-cover ">
     <div>
       <Navbar />
     </div>
